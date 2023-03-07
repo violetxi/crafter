@@ -304,10 +304,13 @@ class Zombie(Object):
       if self.cooldown:
         self.cooldown -= 1
       else:
+        # reduce damage
         if self.player.sleeping:
-          damage = 7
+          #damage = 7
+          damage = 0
         else:
-          damage = 2
+          #damage = 2
+          damage = 0
         self.player.health -= damage
         self.cooldown = 5
 
@@ -374,7 +377,9 @@ class Arrow(Object):
     target = self.pos + self.facing
     material, obj = self.world[target]
     if obj:
-      obj.health -= 2
+      #obj.health -= 2
+      # do not harm the player
+      obj.health -= 0
       self.world.remove(self)
     elif material not in self.walkable:
       self.world.remove(self)

@@ -1,8 +1,8 @@
-import setuptools
+from setuptools import setup
 import pathlib
 
 
-setuptools.setup(
+setup(
     name='crafter',
     version='1.8.0',
     description='Open world survival game for reinforcement learning.',
@@ -16,9 +16,8 @@ setuptools.setup(
         'numpy', 'imageio', 'pillow', 'opensimplex', 'ruamel.yaml',
         # Numba is an optional dependency but we want it installed by default
         # because it speeds up world generation by ~5x.
-        'numba',
+        'numba', 'pygame'
     ],
-    extras_require={'gui': ['pygame']},
     classifiers=[
         'Intended Audience :: Science/Research',
         'License :: OSI Approved :: MIT License',

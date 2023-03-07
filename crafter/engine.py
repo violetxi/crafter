@@ -260,9 +260,9 @@ class SemanticView:
   def __call__(self):
     canvas = self._world._mat_map.copy()
     for obj in self._world.objects:
+      print(self._obj_ids, obj)
       canvas[tuple(obj.pos)] = self._obj_ids[type(obj)]
     return canvas
-
 
 def _inside(lhs, mid, rhs):
   return (lhs[0] <= mid[0] < rhs[0]) and (lhs[1] <= mid[1] < rhs[1])

@@ -45,8 +45,10 @@ class Env(BaseClass):
     self._item_view = engine.ItemView(
         self._textures, [view[0], item_rows])
     self._sem_view = engine.SemanticView(self._world, [
-        objects.Player, objects.Cow, objects.Zombie,
-        objects.Skeleton, objects.Arrow, objects.Plant])
+        objects.Player, objects.Cow, objects.Plant])
+    #self._sem_view = engine.SemanticView(self._world, [
+    #    objects.Player, objects.Cow, objects.Zombie,
+    #    objects.Skeleton, objects.Arrow, objects.Plant])
     self._step = None
     self._player = None
     self._last_health = None
@@ -71,7 +73,7 @@ class Env(BaseClass):
     center = (self._world.area[0] // 2, self._world.area[1] // 2)
     self._episode += 1
     self._step = 0
-    self._world.reset(seed=hash((self._seed, self._episode)) % (2 ** 31 - 1))
+    self._world.reset(seed=hash((self._seed, self._episode)) % (2 ** 31 - 1))    
     self._update_time()
     self._player = objects.Player(self._world, center)
     self._last_health = self._player.health
@@ -140,15 +142,15 @@ class Env(BaseClass):
 
   def _balance_chunk(self, chunk, objs):
     light = self._world.daylight
-    self._balance_object(
-        chunk, objs, objects.Zombie, 'grass', 6, 0, 0.3, 0.4,
-        lambda pos: objects.Zombie(self._world, pos, self._player),
-        lambda num, space: (
-            0 if space < 50 else 3.5 - 3 * light, 3.5 - 3 * light))
-    self._balance_object(
-        chunk, objs, objects.Skeleton, 'path', 7, 7, 0.1, 0.1,
-        lambda pos: objects.Skeleton(self._world, pos, self._player),
-        lambda num, space: (0 if space < 6 else 1, 2))
+    #self._balance_object(
+    #    chunk, objs, objects.Zombie, 'grass', 6, 0, 0.3, 0.4,
+    #    lambda pos: objects.Zombie(self._world, pos, self._player),
+    #    lambda num, space: (
+    #        0 if space < 50 else 3.5 - 3 * light, 3.5 - 3 * light))
+    #self._balance_object(
+    #    chunk, objs, objects.Skeleton, 'path', 7, 7, 0.1, 0.1,
+    #    lambda pos: objects.Skeleton(self._world, pos, self._player),
+    #    lambda num, space: (0 if space < 6 else 1, 2))
     self._balance_object(
         chunk, objs, objects.Cow, 'grass', 5, 5, 0.01, 0.1,
         lambda pos: objects.Cow(self._world, pos),
