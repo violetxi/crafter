@@ -1,3 +1,4 @@
+**This is a version of crafter without zombies and skeletons**
 **Status:** Stable release
 
 [![PyPI](https://img.shields.io/pypi/v/crafter.svg)](https://pypi.python.org/pypi/crafter/#history)
@@ -43,8 +44,7 @@ Capabilities](https://arxiv.org/pdf/2109.06780.pdf)
 ## Play Yourself
 
 ```sh
-python3 -m pip install crafter  # Install Crafter
-python3 -m pip install pygame   # Needed for human interface
+pip install -e .
 python3 -m crafter.run_gui      # Start the game
 ```
 
