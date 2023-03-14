@@ -109,6 +109,7 @@ def main():
 
     # Environment step.
     _, reward, done, _ = env.step(env.action_names.index(action))
+    
     duration += 1
 
     # Achievements.
